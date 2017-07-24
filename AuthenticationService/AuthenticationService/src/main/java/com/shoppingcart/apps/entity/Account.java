@@ -12,7 +12,20 @@ import javax.persistence.Table;
 
 public class Account implements Serializable {
  
-    private static final long serialVersionUID = -2054386655979281969L;
+    public Account() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Account(String userName, String password, boolean active, String userRole) {
+		super();
+		this.userName = userName;
+		this.password = password;
+		this.active = active;
+		this.userRole = userRole;
+	}
+
+	private static final long serialVersionUID = -2054386655979281969L;
  
       
     public static final String ROLE_MANAGER = "MANAGER";

@@ -25,12 +25,10 @@
        <h3>Enter username and password</h3>
        <br>
        <!-- /login?error=true -->
-       <c:if test="${param.error == 'true'}">
+       <c:if test="${not empty InvalidUser}">
            <div style="color: red; margin: 10px 0px;">
  
-               Login Failed!!!<br /> Reason :
-               ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
- 
+               Login Failed!!!<br /> Reason :${InvalidUser} 
            </div>
        </c:if>
  

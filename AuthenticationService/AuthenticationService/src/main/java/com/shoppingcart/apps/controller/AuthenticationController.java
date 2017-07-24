@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -15,7 +14,6 @@ import com.shoppingcart.apps.model.User;
 import com.shoppingcart.apps.repository.UserRepository;
 
 @Controller
-//@RequestMapping("/api/login")
 public class AuthenticationController {
 
    // private static final String template = "Hello, %s!";
@@ -27,17 +25,15 @@ public class AuthenticationController {
 
 	 @RequestMapping(value = { "/api/validateUser" })
 	    public @ResponseBody User validateUser(HttpServletRequest request,Model model, @RequestParam("userName") String userName,@RequestParam("password") String password) {
-	    	Account account = userRepository.findOne(userName);
+	    	Account account = userRepository.validateUser(userName,password);
+	    	User user=null;
 	        System.out.println("Account= " + account);
-	 
-	        User user=new User(account.getUserName(),account.getUserRole(),account.isActive(),account.getPassword());	        
+	        if(account!=null){	 
+	        	user=new User(account.getUserName(),account.getUserRole(),account.isActive(),account.getPassword());	        	
+	        }
 	        
-	        //model.addAttribute("userPrincipal", user);
-	        //request.getSession().setAttribute("user", user);
+	        return user;	 
 	        
-	        return user;
-	 
-	        //return "index";
 	    }
    
 

@@ -174,11 +174,17 @@ public class ShoppingCartController {
 		System.out.println("uriComponents="+uriComponents.toUriString());		
 		RestTemplate restTemplate=new RestTemplate();
 		User user= restTemplate.getForObject(uriComponents.toUri().toString(),User.class,params);
-		
-		model.addAttribute("userPrincipal", user);
-		request.getSession().setAttribute("user", user);
+		if((user!=null) && (user.getUserName()!=null)){
+			model.addAttribute("userPrincipal", user);			
+			request.getSession().setAttribute("user", user);
+			return "index";
 
-		return "index";
+		}else{
+			model.addAttribute("InvalidUser", "Invalid username or password");
+			return "login";
+		}
+		
+		
 	}
 
 	@RequestMapping(value = { "/logout" }, method = RequestMethod.GET)

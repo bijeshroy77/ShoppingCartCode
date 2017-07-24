@@ -1,8 +1,6 @@
 package com.shoppingcart.apps.model;
 
-public class User {
-	
-	
+public class User {	
 	
 	private String userName;
 	private String role;
