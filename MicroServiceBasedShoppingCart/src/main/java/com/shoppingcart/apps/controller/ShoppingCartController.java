@@ -128,7 +128,7 @@ public class ShoppingCartController {
             BindingResult result, //
             final RedirectAttributes redirectAttributes) {
  
-    		System.out.println("Inside productSave ");
+    		System.out.println("Inside productSave fike size="+productInfo);
     	MultiValueMap<String, Object> params = new LinkedMultiValueMap<String, Object>();
 		params.add("code", productInfo.getCode());
 		params.add("name", productInfo.getName());

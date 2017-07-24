@@ -1,5 +1,7 @@
 package com.shoppingcart.apps.model;
 
+import java.util.Arrays;
+
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -75,6 +77,15 @@ public class ProductInfo {
 
 	public void setImage(byte[] image) {
 		this.image = image;
+	}
+
+
+
+
+	@Override
+	public String toString() {
+		return "ProductInfo [code=" + code + ", name=" + name + ", price=" + price + ", image=" + Arrays.toString(image)
+				+ ", newProduct=" + newProduct + ", fileData=" + fileData + "]";
 	}
  
 }
